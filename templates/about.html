@@ -1,0 +1,131 @@
+{{define "about"}}
+  {{ template "header"}}
+  <title>О нас</title>
+  <!-- Подключение Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <div>
+    <h3 class="mt-3">Планы на будущее</h3>
+  <div class="container mt-4">
+    <!-- Карусель -->
+    <div id="carouselFutureUpdates" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Первая карточка -->
+        <div class="carousel-item active">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <span class="badge bg-dark" style="position: absolute; top: 5px; left: 5px;">1</span>
+              <h5 class="card-title">Редактирование и удаление статей</h5>
+              <p class="card-text">Возможность редактировать и удалять статьи позволяет оперативно обновлять информацию, 
+                устранять неточности и исправлять ошибки
+              </p>
+              <span class="badge bg-secondary" style="position: absolute; bottom: 5px; right: 5px;">В разработке</span>
+            </div>
+          </div>
+        </div>
+        <!-- Первая карточка -->
+        <div class="carousel-item active">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <span class="badge bg-dark" style="position: absolute; top: 5px; left: 5px;">2</span>
+              <h5 class="card-title">Отображение статей</h5>
+              <p class="card-text">Создать страницу для отображения статей. Будет реализован удобный интерфейс
+                для удобного чтения
+              </p>
+              <span class="badge bg-secondary" style="position: absolute; bottom: 5px; right: 5px;">В разработке</span>
+            </div>
+          </div>
+        </div>
+        <!-- Вторая карточка -->
+        <div class="carousel-item">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <span class="badge bg-dark" style="position: absolute; top: 5px; left: 5px;">3</span>
+              <h5 class="card-title">Улучшение интерфейса и его адаптация</h5>
+              <p class="card-text">Это сделает ваше взаимодействие с приложением еще более комфортным и интуитивно понятным</p>
+              <span class="badge bg-secondary" style="position: absolute; bottom: 5px; right: 5px;">В разработке</span>
+            </div>
+          </div>
+        </div>
+        <!-- Третья карточка -->
+        <div class="carousel-item">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <span class="badge bg-dark" style="position: absolute; top: 5px; left: 5px;">4</span>
+              <h5 class="card-title">Добавление раздела с автомобилями</h5>
+              <p class="card-text">Разработка сервиса для любителей автомобилей. В нем можно будет публиковать 
+                фотокарточки, название, описание и цену автомобиля
+              </p>
+              <span class="badge bg-secondary" style="position: absolute; bottom: 5px; right: 5px;">В разработке</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Управление каруселью -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselFutureUpdates" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselFutureUpdates" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
+    </div>
+  </div>
+  <h3 class="mt-5">Реализованный функционал</h3>
+  <div class="container mt-4">
+    <!-- Карусель -->
+    <div id="carouselReleasedUpdates" class="carousel slide" data-bs-wrap="false">
+      <div class="carousel-inner">
+        <!-- Первая карточка -->
+        <div class="carousel-item active">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <h5 class="card-title">Создание сайта</h5>
+              <p class="card-text">Начало пути разработки данного сайта. В этот день были разработаны header, footer и главная страница сайта. 
+              </p>
+              <span class="badge bg-success" style="position: absolute; bottom: 5px; right: 5px;">01.12.2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <h5 class="card-title">Добавление статей</h5>
+              <p class="card-text">Реализована возможность добавлять статьи. Все они надежно хранятся в базе данных
+              </p>
+              <span class="badge bg-success" style="position: absolute; bottom: 5px; right: 5px;">04.12.2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          <div class="card" style="width: 38rem; margin: 0 auto;">
+            <div class="card-body">
+              <h5 class="card-title">Добавление раздела "Про нас"</h5>
+              <p class="card-text">Раздел, в котором разработчик и гости сайта могут наблюдать развитием сайта. 
+                В нем будут отображаться будущие разработки и те, что уже были реализованы. В прочем вы сейчас на этой странице :)
+              </p>
+              <span class="badge bg-success" style="position: absolute; bottom: 5px; right: 5px;">06.12.2024</span>
+            </div>
+          </div>
+        </div>
+
+
+      <!-- Управление каруселью -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselReleasedUpdates" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselReleasedUpdates" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Подключение Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  {{template "footer"}}
+{{end}}

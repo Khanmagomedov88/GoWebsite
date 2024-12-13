@@ -1,0 +1,12 @@
+{{define "errorPage"}}
+  {{ template "header"}}
+  <title>{{.ErrorTitle}}</title>
+  <main class="d-flex flex-column min-vh-100"> <!-- Устанавливаем минимальную высоту и структуру flex -->
+    <div class="px-3 flex-grow-1"> <!-- flex-grow-1 для заполнения пространства -->
+      <h1>{{.ErrorTitle}}</h1>
+      <p>{{.ErrorMessage}}</p>
+      <a href="/" class="btn btn-lg btn-light fw-bold border-white bg-white">Вернуться на главную</a>
+    </div>
+    {{template "footer"}} <!-- Футер будет внизу из-за flex-column и min-vh-100 -->
+  </main>
+{{end}}

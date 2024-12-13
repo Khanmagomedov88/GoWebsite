@@ -1,0 +1,17 @@
+{{define "create"}}
+  {{ template "header"}}
+  <title>Создать статью</title>
+  <main class="px-3 flex-grow-1 justify-content-center d-flex min-vh-100">
+    <div class="w-50">
+    <h1 class="mt-5">Форма для создания статьи</h1>
+    <form action="/save_article" class="p-4 rounded shadow mt-4" method="post">
+        <input type="text" name="title" id="title" placeholder="Введите название статьи" class="form-control"><br>
+        <textarea name="anons" id="anons" class="form-control" placeholder="Введите анонс статьи"></textarea><br>
+        <textarea name="full_text" id="full_text" class="form-control" placeholder="Введите текст статьи"></textarea><br>
+        <button class="btn btn-warning w-50">Добавить</button>
+    </form>
+  </div>
+  </main>
+  {{template "footer"}}
+</div>
+{{end}}

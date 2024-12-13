@@ -3,15 +3,14 @@ package myuser
 import "fmt"
 
 type MyUser struct {
-	Name                  string
-	Age                   uint16
-	Money                 uint16
-	Avg_grades, Happiness float64
+	Id   int
+	Name string `json:"name"`
+	Age  uint16 `json:"age"`
 }
 
 func (u MyUser) String() string {
-	return fmt.Sprintf("Информация о '%s'\nВозраст %d \nБаланс: %d \nУровень счастья: %f",
-		u.Name, u.Age, u.Money, u.Happiness)
+	return fmt.Sprintf("Информация о '%s':\nВозраст %d\n",
+		u.Name, u.Age)
 }
 
 func (u *MyUser) SetNewName(newName string) {

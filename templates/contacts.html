@@ -1,0 +1,54 @@
+{{define "contacts"}}
+  {{template "header"}}
+  <title>Контакты</title>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <!-- Основная информация -->
+      <div class="col-md-8 col-lg-6">
+        <h1 class="mb-4">Контакты</h1>
+
+        <!-- Информация о компании -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Контактная информация</h5>
+            <p class="card-text">Ниже вы найдете все способы связаться с нами:</p>
+            
+            <div class="row">
+              <!-- Левый столбец -->
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li class="mb-3"><strong>Адрес:</strong> Москва, ул. Дмитрия Донского, д. 6, оф. 6</li>
+                  <li class="mb-3"><strong>Телефон:</strong> <a href="">+7 (920) 080-00-04</a></li>
+                </ul>
+              </div>
+              <!-- Правый столбец -->
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li class="mb-3"><strong>Электронная почта:</strong> <a href="mailto:info@example.com">magomedrasul_077@mail.ru</a></li>
+                  <li><strong>Часы работы:</strong> Понедельник - Пятница: 9:00 - 18:00</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Социальные сети -->
+        <div class="text-center">
+          <h5 class="mb-4">Мы в социальных сетях</h5>
+          <a href="https://facebook.com" target="_blank" class="btn btn-outline-primary btn-lg mx-2">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://vk.com" target="_blank" class="btn btn-outline-info btn-lg mx-2">
+            <i class="fab fa-vk"></i> Вконтакте
+          </a>
+          <a href="https://instagram.com" target="_blank" class="btn btn-outline-danger btn-lg mx-2">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{template "footer"}}
+{{end}}
