@@ -1,0 +1,9 @@
+{{define "article"}}
+{{template "header"}}
+  <title>Статья: {{.Title}}</title>
+  <h2 class="mb-5 mt-4">{{.Title}}</h1>
+  <p class="">{{.Anons}}</p>
+  <hr class="my-3">
+  <p class="">{{.FullText}}</p>
+{{template "footer"}}
+{{end}}

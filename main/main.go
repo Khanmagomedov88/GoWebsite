@@ -8,6 +8,7 @@ import (
 	"www/article"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -20,19 +21,35 @@ type ErrorPageData struct {
 }
 
 func handleRequest() {
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
-	http.HandleFunc("/", index)
-	http.HandleFunc("/create", create)
-	http.HandleFunc("/articles", articles)
-	http.HandleFunc("/contacts", contacts)
-	http.HandleFunc("/about", about)
-	http.HandleFunc("/save_article", save_article)
+	rtr := mux.NewRouter()
+	rtr.HandleFunc("/", index).Methods("GET")
+	rtr.HandleFunc("/create", create).Methods("GET")
+	rtr.HandleFunc("/articles", articles).Methods("GET")
+	rtr.HandleFunc("/article/{id:[0-9]+}", show_article).Methods("GET")
+	rtr.HandleFunc("/contacts", contacts).Methods("GET")
+	rtr.HandleFunc("/about", about).Methods("GET")
+	rtr.HandleFunc("/save_article", save_article).Methods("POST")
 
+	http.Handle("/", rtr)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	http.ListenAndServe(":8080", nil)
 }
 
 func index(page http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("templates/index.html", "templates/header.html", "templates/footer.html")
+
+	if err != nil {
+		fmt.Fprintf(page, err.Error())
+	}
+
+	t.ExecuteTemplate(page, "index", nil)
+}
+
+func show_article(page http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	var post article.Article
+
+	t, err := template.ParseFiles("templates/article.html", "templates/header.html", "templates/footer.html")
 
 	if err != nil {
 		fmt.Fprintf(page, err.Error())
@@ -46,23 +63,17 @@ func index(page http.ResponseWriter, r *http.Request) {
 
 	defer db.Close()
 
-	res, err := db.Query("Select * From articles")
+	row := db.QueryRow("SELECT id, title, anons, full_text FROM articles WHERE id = ?", vars["id"])
 
+	fmt.Println(post.Title, post.Id)
+
+	err = row.Scan(&post.Id, &post.Title, &post.Anons, &post.FullText)
 	if err != nil {
-		panic(err)
+		fmt.Println("Error scanning row:", err)
+		return
 	}
 
-	for res.Next() {
-		var post article.Article
-
-		err = res.Scan(&post.Id, &post.Title, &post.Anons, &post.FullText)
-
-		if err != nil {
-			panic(err)
-		}
-	}
-
-	t.ExecuteTemplate(page, "index", nil)
+	err = t.ExecuteTemplate(page, "article", post)
 }
 
 func save_article(page http.ResponseWriter, r *http.Request) {
@@ -115,13 +126,42 @@ func create(page http.ResponseWriter, r *http.Request) {
 }
 
 func articles(page http.ResponseWriter, r *http.Request) {
+	var posts []article.Article
+
 	t, err := template.ParseFiles("templates/articles.html", "templates/header.html", "templates/footer.html")
 
 	if err != nil {
 		fmt.Fprintf(page, err.Error())
 	}
 
-	t.ExecuteTemplate(page, "articles", nil)
+	db, err := sql.Open("mysql", "root:Anama654!@tcp(127.0.0.1:3308)/golang")
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer db.Close()
+
+	res, err := db.Query("Select * From articles")
+
+	if err != nil {
+		panic(err)
+	}
+
+	for res.Next() {
+		var post article.Article
+		err = res.Scan(&post.Id, &post.Title, &post.Anons, &post.FullText)
+		if err != nil {
+			panic(err)
+		}
+		posts = append(posts, post)
+	}
+
+	err = t.ExecuteTemplate(page, "articles", posts)
+
+	if err != nil {
+		fmt.Fprintf(page, err.Error())
+	}
 }
 
 func about(page http.ResponseWriter, r *http.Request) {

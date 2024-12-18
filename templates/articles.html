@@ -1,5 +1,25 @@
 {{define "articles"}}
-  {{ template "header"}}
-  <title>Статьи</title>
-    <h2>В разработке</h2>
+{{template "header"}}
+<title>Статьи</title>
+<div class="container my-3">
+  <h1 class="text-center mb-4">Все статьи</h1>
+  <div class="row">
+    {{range .}}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{.Title}}</h5>
+            <p class="card-text text-muted">{{.Anons}}</p>
+            <hr class="my-2">
+            <a href="/article/{{.Id}}" class="btn btn-primary">Читать далее</a>
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <h2>Статей нет</h2>
+    {{end}}
+  </div>
+</div>
+
+{{template "footer"}}
 {{end}}
